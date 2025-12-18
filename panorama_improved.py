@@ -319,6 +319,8 @@ def incremental_panorama(
     max_megapixels=100,
     # 新增：控制曝光/接缝/融合阶段的工作分辨率，防止内存炸裂
     work_megapixels=20,
+    # 新增：可关闭曝光补偿以节省内存
+    use_exposure_comp=True,
     min_sp_matches=150,
     min_inliers=120,
     min_inlier_ratio=0.30,
@@ -631,8 +633,11 @@ def incremental_panorama(
         gc.collect()
 
     # ========== detail 后端：曝光补偿 + 接缝 + 多带 ==========
-    print("运行曝光补偿 (GAIN_BLOCKS)...")
-    warped_imgs = run_exposure_compensation(warped_imgs, warped_masks, corners)
+    if use_exposure_comp:
+        print("运行曝光补偿 (GAIN_BLOCKS)...")
+        warped_imgs = run_exposure_compensation(warped_imgs, warped_masks, corners)
+    else:
+        print("跳过曝光补偿 (use_exposure_comp=False)")
 
     print(f"运行接缝查找 ({seam_mode})...")
     warped_masks = run_seam_finder(warped_imgs, corners, warped_masks, mode=seam_mode)
@@ -733,6 +738,7 @@ if __name__ == "__main__":
     #     max_height=10000,
     #     max_megapixels=200,
     #     work_megapixels=20,
+    #     use_exposure_comp=False,
     # )
     #
     # print(f"\n拼接完成！结果保存在：{out_dir}")
