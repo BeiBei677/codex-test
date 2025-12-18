@@ -681,4 +681,38 @@ def main():
 
 
 if __name__ == "__main__":
+    # 你可以直接运行 main()，也可以按下方示例手动配置：
+    # 示例：手动配置路径与参数（保持注释，按需复制到脚本或交互运行）
+    # img_dir = "/mnt/d/software/detectron2_project/Test detectron2/images/yongzhou-small"
+    # weights_path = "superpoint_v1.pth"
+    # out_dir = "/mnt/d/software/detectron2_project/Test detectron2/outputs"
+    # target_short = 1400
+    # use_gpu = True
+    #
+    # ensure_dir(out_dir)
+    # image_paths = collect_image_paths(img_dir, max_images=62)
+    # print(f"找到 {len(image_paths)} 张图像，按文件名排序")
+    #
+    # incremental_panorama(
+    #     image_paths=image_paths,
+    #     weights_path=weights_path,
+    #     out_dir=out_dir,
+    #     target_short=target_short,
+    #     use_gpu=use_gpu,
+    #     sp_conf=0.015,
+    #     sp_nms=3,
+    #     ratio=0.7,
+    #     reproj_thresh=2.5,
+    #     topk=3500,
+    #     blend_strength=6,
+    #     seam_mode="gc_colorgrad",
+    #     max_width=14000,
+    #     max_height=10000,
+    #     max_megapixels=200,
+    #     work_megapixels=40,
+    # )
+    #
+    # print(f"\n拼接完成！结果保存在：{out_dir}")
+    # print(f"- 多带融合全景图: {os.path.join(out_dir, 'panorama_multiband.jpg')}")
+
     main()
