@@ -318,7 +318,7 @@ def incremental_panorama(
     max_height=8000,
     max_megapixels=100,
     # 新增：控制曝光/接缝/融合阶段的工作分辨率，防止内存炸裂
-    work_megapixels=40,
+    work_megapixels=20,
     min_sp_matches=150,
     min_inliers=120,
     min_inlier_ratio=0.30,
@@ -732,7 +732,7 @@ if __name__ == "__main__":
     #     max_width=14000,
     #     max_height=10000,
     #     max_megapixels=200,
-    #     work_megapixels=40,
+    #     work_megapixels=20,
     # )
     #
     # print(f"\n拼接完成！结果保存在：{out_dir}")
